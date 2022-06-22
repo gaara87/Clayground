@@ -8,6 +8,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Clayground">
         <activity
+            android:name=".ui.fragmentized.HybridComposeActivity"
+            android:exported="true"
+            android:label="Hybrid Compose"
+            android:theme="@style/Theme.Clayground">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main"
