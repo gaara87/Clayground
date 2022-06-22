@@ -5,6 +5,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import awesome.shizzle.clayground.ui.fragmentized.LocalTopLevelBottomSheet
+import awesome.shizzle.clayground.ui.fragmentized.TopLevelBottomSheetState
 
 private val DarkColorPalette = darkColors(
     primary = Purple200,
@@ -35,9 +36,11 @@ fun ClaygroundTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compos
         LightColorPalette
     }
 
-    val modalBottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+    val topLevelBottomSheetState = TopLevelBottomSheetState(
+        modalBottomSheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+    )
     CompositionLocalProvider(
-        LocalTopLevelBottomSheet provides modalBottomSheetState
+        LocalTopLevelBottomSheet provides topLevelBottomSheetState
     ) {
         MaterialTheme(
             colors = colors,

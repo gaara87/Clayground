@@ -23,8 +23,12 @@ class HybridComposeActivity : FragmentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             ClaygroundTheme {
+                val topLevelBottomSheetState = LocalTopLevelBottomSheet.current
                 TopLevelBottomSheet(
-                    sheetState = LocalTopLevelBottomSheet.current,
+                    sheetState = topLevelBottomSheetState.modalBottomSheetState,
+                    sheetContent = {
+//                        topLevelBottomSheetState.sheetContent()
+                    },
                 ) {
                     Scaffold(
                         modifier = Modifier.systemBarsPadding(),

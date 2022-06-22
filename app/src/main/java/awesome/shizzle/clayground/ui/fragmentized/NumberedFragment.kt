@@ -11,9 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
@@ -45,11 +46,20 @@ class NumberedFragment : Fragment() {
                 contentAlignment = Alignment.Center
             ) {
                 Column {
-                    val bottomSheetState = LocalTopLevelBottomSheet.current
+                    val topLevelBottomSheetState = LocalTopLevelBottomSheet.current
+                    var count by remember { mutableStateOf(0) }
                     Text(text = param1.toString())
                     Button(
                         onClick = {
-                            scope.launch { bottomSheetState.show() }
+                            count++
+                            scope.launch {
+                                topLevelBottomSheetState.showSheet {
+                                    Text(
+                                        text = "Count $count",
+                                        color = Color.Red
+                                    )
+                                }
+                            }
                         }
                     ) {
                         Text(text = "click moi")
