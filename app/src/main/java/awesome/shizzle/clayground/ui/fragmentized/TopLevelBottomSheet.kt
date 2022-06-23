@@ -6,12 +6,12 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -29,16 +29,9 @@ fun TopLevelBottomSheet(
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
-class TopLevelBottomSheetState(
-    val modalBottomSheetState: ModalBottomSheetState,
-) {
-    fun showSheet(sheetContent: @Composable ColumnScope.() -> Unit) {
-
+internal val LocalSheetContentUpdater =
+    staticCompositionLocalOf<((@Composable () -> Unit)) -> Unit> {
+        error("Initialize me")
     }
 
-}
-
-internal val LocalTopLevelBottomSheet = staticCompositionLocalOf<TopLevelBottomSheetState> {
-    error("Initialize me")
-}
+internal val LocalSheetContent = staticCompositionLocalOf<@Composable () -> Unit> { { } }

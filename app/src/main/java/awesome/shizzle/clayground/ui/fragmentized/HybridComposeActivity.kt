@@ -9,12 +9,18 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.FragmentActivity
 import awesome.shizzle.clayground.ui.theme.ClaygroundTheme
+
+lateinit var modalBottomSheetState: ModalBottomSheetState
 
 class HybridComposeActivity : FragmentActivity() {
 
@@ -23,11 +29,20 @@ class HybridComposeActivity : FragmentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             ClaygroundTheme {
-                val topLevelBottomSheetState = LocalTopLevelBottomSheet.current
+                val sheetContent = LocalSheetContent.current
+                modalBottomSheetState =
+                    rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
                 TopLevelBottomSheet(
-                    sheetState = topLevelBottomSheetState.modalBottomSheetState,
+                    sheetState = modalBottomSheetState,
                     sheetContent = {
-//                        topLevelBottomSheetState.sheetContent()
+                        Box(
+                            modifier = Modifier
+                                .background(Color.Gray)
+                                .height(250.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            sheetContent()
+                        }
                     },
                 ) {
                     Scaffold(

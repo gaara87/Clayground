@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.Button
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
@@ -46,21 +47,20 @@ class NumberedFragment : Fragment() {
                 contentAlignment = Alignment.Center
             ) {
                 Column {
-                    val topLevelBottomSheetState = LocalTopLevelBottomSheet.current
+                    val updater = LocalSheetContentUpdater.current
                     var count by remember { mutableStateOf(0) }
                     Text(text = param1.toString())
                     Button(
                         onClick = {
                             count++
-                            scope.launch {
-                                topLevelBottomSheetState.showSheet {
-                                    Text(
-                                        text = "Count $count",
-                                        color = Color.Red
-                                    )
-                                }
+                            updater {
+                                Text(
+                                    text = "Count $count",
+                                    color = Color.Red
+                                )
                             }
-                        }
+                            scope.launch { modalBottomSheetState.show() }
+                         }
                     ) {
                         Text(text = "click moi")
                     }
