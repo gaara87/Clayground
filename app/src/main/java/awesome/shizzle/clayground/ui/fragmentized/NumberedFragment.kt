@@ -2,15 +2,10 @@ package awesome.shizzle.clayground.ui.fragmentized
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,10 +15,10 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 private const val ARG_PARAM1 = "param1"
 
-@OptIn(ExperimentalMaterialApi::class)
 class NumberedFragment : Fragment() {
     private var param1: Int? = null
 
@@ -47,20 +42,40 @@ class NumberedFragment : Fragment() {
                 contentAlignment = Alignment.Center
             ) {
                 Column {
-                    val updater = LocalSheetContentUpdater.current
-                    var count by remember { mutableStateOf(0) }
-                    Text(text = param1.toString())
+                    val localBottomSheetContent = LocalGlobalBottomSheet.current
+                    var count by remember { mutableStateOf(param1!!) }
+                    val title by derivedStateOf { "This is a fragment section count - $count" }
+                    Text(text = title)
                     Button(
                         onClick = {
                             count++
-                            updater {
-                                Text(
-                                    text = "Count $count",
-                                    color = Color.Red
-                                )
+                            scope.launch {
+                                localBottomSheetContent.showSheet {
+                                    Column(
+                                        modifier = Modifier
+                                            .background(Color.DarkGray)
+                                            .fillMaxWidth()
+                                    ) {
+                                        Text(
+                                            text = "Count $count",
+                                            color = Color(Random.nextLong()),
+                                        )
+                                        Text(
+                                            text = "Count $count",
+                                            color = Color(Random.nextLong()),
+                                        )
+                                        Text(
+                                            text = "Count $count",
+                                            color = Color(Random.nextLong()),
+                                        )
+                                        Text(
+                                            text = "Count $count",
+                                            color = Color(Random.nextLong()),
+                                        )
+                                    }
+                                }
                             }
-                            scope.launch { modalBottomSheetState.show() }
-                         }
+                        }
                     ) {
                         Text(text = "click moi")
                     }
