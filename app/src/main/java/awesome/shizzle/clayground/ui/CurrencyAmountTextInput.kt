@@ -2,7 +2,7 @@ package awesome.shizzle.clayground.ui
 
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,7 +28,7 @@ fun CurrencyAmountTextInput() {
             }
         },
         visualTransformation = CurrencyVisualTransformation,
-        textStyle = MaterialTheme.typography.displayMedium,
+        textStyle = MaterialTheme.typography.body2,
         keyboardOptions = KeyboardOptions(
             capitalization = KeyboardCapitalization.None,
             autoCorrect = false,

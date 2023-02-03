@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -74,7 +74,7 @@ fun AddressTextInput() {
             keyboardActions = KeyboardActions(
                 onNext = { focusManager.clearFocus() }
             ),
-            textStyle = MaterialTheme.typography.displayLarge,
+            textStyle = MaterialTheme.typography.h1,
         )
     }
 
