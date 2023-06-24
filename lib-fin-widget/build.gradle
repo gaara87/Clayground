@@ -31,17 +31,24 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
 }
 
 dependencies {
+    implementation libs.androidx.material
+
+    implementation libs.androidx.activity.compose
     // For Glance support
     implementation libs.glance
     // For AppWidgets support
     implementation libs.androidx.glance.appwidget
     // or debugImplementation if only used for previews
-    implementation libs.appwidget.host
+    debugImplementation libs.appwidget.host
     debugImplementation libs.appwidget.viewer
-    implementation libs.appwidget.configuration
+//    implementation libs.appwidget.configuration
+
+    // Android Studio Preview support
+    implementation libs.androidx.ui.tooling.preview
+    debugImplementation libs.androidx.ui.tooling
 }

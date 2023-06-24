@@ -36,7 +36,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
     packagingOptions {
         resources {
@@ -53,12 +53,12 @@ dependencies {
     implementation composeBom
     androidTestImplementation composeBom
 
-    implementation 'androidx.compose.material:material'
-    implementation 'androidx.compose.ui:ui'
+    implementation libs.androidx.material
+    implementation libs.androidx.ui
 
     // Android Studio Preview support
-    implementation 'androidx.compose.ui:ui-tooling-preview'
-    debugImplementation 'androidx.compose.ui:ui-tooling'
+    implementation libs.androidx.ui.tooling.preview
+    debugImplementation libs.androidx.ui.tooling
 
     // UI Tests
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
