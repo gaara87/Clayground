@@ -1,16 +1,16 @@
 [versions]
-accompanist-pager = "0.30.1"
+accompanist-pager = "0.32.0"
 activity-compose = "1.7.2"
-androidx-glance = "1.0.0-beta01"
+androidx-glance = "1.0.0"
 androidxComposeBom = "2023.06.01"
 appcompat = "1.6.1"
-fragment-ktx = "1.6.0"
+fragment-ktx = "1.6.1"
 glance-widget-helper = "0.2.2"
 kotlinCompilerExtensionVersion = "1.4.2"
 kotlinxCollectionsImmutable = "0.3.5"
-ktx = "1.10.1"
-material = "1.4.3"
-uiToolingPreview = "1.4.3"
+ktx = "1.12.0"
+material = "1.5.1"
+uiToolingPreview = "1.5.1"
 
 [libraries]
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanist-pager" }
