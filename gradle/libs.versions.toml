@@ -7,6 +7,7 @@ appcompat = "1.6.1"
 fragment-ktx = "1.6.0"
 glance-widget-helper = "0.2.2"
 kotlinCompilerExtensionVersion = "1.4.2"
+kotlinxCollectionsImmutable = "0.3.5"
 ktx = "1.10.1"
 material = "1.4.3"
 uiToolingPreview = "1.4.3"
@@ -27,5 +28,6 @@ appwidget-configuration = { module = "com.google.android.glance.tools:appwidget-
 appwidget-host = { module = "com.google.android.glance.tools:appwidget-host", version.ref = "glance-widget-helper" }
 appwidget-viewer = { module = "com.google.android.glance.tools:appwidget-viewer", version.ref = "glance-widget-helper" }
 glance = { module = "androidx.glance:glance", version.ref = "androidx-glance" }
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinxCollectionsImmutable" }
 
 [plugins]
